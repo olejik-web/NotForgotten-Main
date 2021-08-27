@@ -3,9 +3,9 @@ export var speed = 200
 export var ex_room_top_limit = 405
 export var ex_room_down_limit = 585
 var limit = ex_room_down_limit - ex_room_top_limit
-var orSize = 0.10
-var downSize = 0.15
-#works for me
+var orSize = 0.13
+var downSize = 0.18
+
 
 func _process(delta):
 	var velocity = Vector2()
