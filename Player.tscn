@@ -23,7 +23,7 @@
 [ext_resource path="res://sprites/main_hero/walk/11.png" type="Texture" id=70]
 [ext_resource path="res://sprites/main_hero/walk/7.png" type="Texture" id=71]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 57.0188
 height = 0.0
 
@@ -45,8 +45,8 @@ scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 41 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.720276, -0.137451 )
-shape = SubResource( 3 )
+scale = Vector2( 0.1, 0.1 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -60,12 +60,10 @@ __meta__ = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -44.1995, -744.458 )
+position = Vector2( -60.9, -922.524 )
 current = true
-limit_left = 0
+zoom = Vector2( 0.75, 0.75 )
+limit_left = -2000
 limit_top = -1000
 limit_right = 1054
 limit_bottom = 601
-__meta__ = {
-"_edit_lock_": true
-}
