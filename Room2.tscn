@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/main_location/location_1.jpg" type="Texture" id=2]
+[ext_resource path="res://scripts/BathScript.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.7977, 79.8716 )
+
+[node name="BathRoom" type="Node"]
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 909.561, 578.5 )
+scale = Vector2( 0.13, 0.13 )
+z_index = 1
+
+[node name="Floor" type="Area2D" parent="."]
+show_behind_parent = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="location_1" type="Sprite" parent="Floor"]
+position = Vector2( 541.118, 304.322 )
+scale = Vector2( 0.563, 0.563 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="Floor"]
+polygon = PoolVector2Array( 28.2669, 599.392, 40.2805, 558.012, 116.366, 523.306, 797.135, 523.306, 898.583, 533.985, 969.329, 555.342, 1060.1, 606.066 )
+one_way_collision_margin = 128.0
+
+[node name="DoorTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorTrigger"]
+position = Vector2( 999.44, 578.749 )
+rotation = -0.991099
+shape = SubResource( 1 )

@@ -6,8 +6,17 @@ var limit = ex_room_down_limit - ex_room_top_limit
 var orSize = 0.13
 var downSize = 0.18
 var out
+var entered_trigger = false
+var from_bath = false
 
-
+func _ready():
+	if Global.enter_scene == 1:
+		position.x = 238.023
+		position.y = 559.601
+		$AnimatedSprite.flip_h = false
+	elif Global.enter_scene == 2:
+		$AnimatedSprite.flip_h = true
+		
 func _process(delta):
 	var velocity = Vector2()
 	if position.y > ex_room_top_limit:

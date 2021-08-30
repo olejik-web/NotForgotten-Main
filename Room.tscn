@@ -3,14 +3,16 @@
 [ext_resource path="res://sprites/main_location/main_scene.jpg" type="Texture" id=1]
 [ext_resource path="res://scripts/seek.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sprites/main_location/location_1.jpg" type="Texture" id=4]
 [ext_resource path="res://sprites/main_location/stone.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.7977, 47.6942 )
 
 [node name="MainRoom" type="Node"]
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 454.729, 461.327 )
+position = Vector2( 515.205, 470.146 )
 scale = Vector2( 0.13, 0.13 )
 z_index = 1
 
@@ -28,22 +30,21 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="location_2" type="Sprite" parent="Floor"]
-position = Vector2( -538.157, 300.326 )
-scale = Vector2( 0.555, 0.555 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Collision" type="CollisionPolygon2D" parent="Floor"]
-polygon = PoolVector2Array( -127.487, 599.8, -1036, 598, -1038, 581, -1034, 559, -1026, 547, -1000.05, 525.703, -535, 519, -505, 530, -464, 532, -266, 531, -202, 520, -152.47, 533.838, -126, 550, -106, 575, 129, 573, 162, 560, 177, 537, 220.151, 525.058, 250.355, 464.65, 309.781, 465.352, 324.054, 404.021, 667.314, 406.101, 691.916, 425.63, 719.785, 432.891, 767.53, 434.223, 858.967, 518.318, 870.98, 533.668, 919.035, 573.713, 938.841, 593.988 )
+polygon = PoolVector2Array( 144.59, 590.794, 177, 537, 220.151, 525.058, 250.355, 464.65, 309.781, 465.352, 324.054, 404.021, 667.314, 406.101, 691.916, 425.63, 719.785, 432.891, 767.53, 434.223, 858.967, 518.318, 870.98, 533.668, 919.035, 573.713, 938.841, 593.988 )
 one_way_collision_margin = 128.0
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="stone" type="Sprite" parent="."]
 position = Vector2( 559.124, 300.517 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DoorTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorTrigger"]
+position = Vector2( 140.614, 568.055 )
+rotation = 0.637892
+shape = SubResource( 1 )

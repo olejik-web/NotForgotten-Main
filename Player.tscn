@@ -29,15 +29,15 @@ height = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 47 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 51 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 66 ), ExtResource( 71 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 70 ), ExtResource( 59 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 65 ), ExtResource( 57 ), ExtResource( 60 ), ExtResource( 58 ) ],
 "loop": true,
 "name": "walk",
 "speed": 35.0
+}, {
+"frames": [ ExtResource( 47 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
 } ]
 
 [node name="Player" type="Area2D"]
@@ -63,7 +63,7 @@ __meta__ = {
 position = Vector2( -60.9, -922.524 )
 current = true
 zoom = Vector2( 0.75, 0.75 )
-limit_left = -2000
+limit_left = 0
 limit_top = -1000
 limit_right = 1054
 limit_bottom = 601
