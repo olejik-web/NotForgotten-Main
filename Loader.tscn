@@ -11,3 +11,6 @@ script = ExtResource( 1 )
 position = Vector2( 512.815, 315.804 )
 scale = Vector2( 1.4344, 1513.37 )
 texture = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}

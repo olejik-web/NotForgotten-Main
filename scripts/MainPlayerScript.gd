@@ -47,4 +47,7 @@ func _process(delta):
 		$AnimatedSprite.play()
 		position += velocity * delta
 	else:
-		$AnimatedSprite.animation = "stand"
+		if velocity.length() != 0:
+			$AnimatedSprite.animation = "walk"
+		else:
+			$AnimatedSprite.animation = "stand"
