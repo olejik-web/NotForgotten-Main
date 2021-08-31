@@ -6,4 +6,4 @@ func _process(delta):
 	$Player.out = $Player.overlaps_area($Floor)
 	if $Player.overlaps_area($DoorTrigger):
 		Global.enter_scene = 2
-		Global.goto_scene("res://Room2.tscn")
+		Global.goto_scene("res://Loader.tscn")
