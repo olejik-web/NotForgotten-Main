@@ -8,6 +8,7 @@ var downSize = 0.18
 var out
 var entered_trigger = false
 var from_bath = false
+var movement = false
 
 func _ready():
 	if Global.enter_scene == 1:
@@ -19,35 +20,48 @@ func _ready():
 		
 func _process(delta):
 	var velocity = Vector2()
-	if position.y > ex_room_top_limit:
-		if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up"):
+		if position.y > ex_room_top_limit:
 			velocity.y -= 0.6
-	if position.y < ex_room_down_limit:
-		if Input.is_action_pressed("ui_down"):
+		$AnimatedSprite.animation = "walk"
+		movement = true
+	if Input.is_action_pressed("ui_down"):
+		if position.y < ex_room_down_limit:
 			velocity.y += 0.6
+		$AnimatedSprite.animation = "walk"
+		movement = true
 	scale.x = (0.5 - (ex_room_down_limit - position.y)/limit) * (downSize - orSize) + orSize 
 	scale.y = (0.5 - (ex_room_down_limit - position.y)/limit) * (downSize - orSize) + orSize 
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
+		$AnimatedSprite.animation = "walk"
+		movement = true
+		$AnimatedSprite.flip_h = false
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
+		$AnimatedSprite.animation = "walk"
+		movement = true
+		$AnimatedSprite.flip_h = true
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$CollisionShape2D.position=velocity
 	if out:
-		if velocity.length() != 0:
-			$AnimatedSprite.animation = "walk"
-		else:
+		print("out")
+		if not movement:
 			$AnimatedSprite.animation = "stand"
+		elif $AnimatedSprite.animation == "stand":
+			$AnimatedSprite.animation = "walk"
 		if velocity.x < 0:
 			$AnimatedSprite.flip_h = true
 		elif velocity.x > 0:
 			$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play()
 		position += velocity * delta
 	else:
-		if velocity.length() != 0:
-			$AnimatedSprite.animation = "walk"
-		else:
+		if not movement:
 			$AnimatedSprite.animation = "stand"
+		elif $AnimatedSprite.animation == "stand":
+			$AnimatedSprite.animation = "walk"
+	movement = false
+	print($AnimatedSprite.animation, movement)
+	$AnimatedSprite.play()
