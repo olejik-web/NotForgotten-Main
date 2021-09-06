@@ -15,13 +15,7 @@ position = Vector2( 909.561, 578.5 )
 scale = Vector2( 0.13, 0.13 )
 z_index = 1
 
-[node name="Floor" type="Area2D" parent="."]
-show_behind_parent = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="location_1" type="Sprite" parent="Floor"]
+[node name="location_1" type="Sprite" parent="."]
 position = Vector2( 541.118, 304.322 )
 scale = Vector2( 0.563, 0.563 )
 texture = ExtResource( 2 )
@@ -29,12 +23,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Collision" type="CollisionPolygon2D" parent="Floor"]
-polygon = PoolVector2Array( 28.2669, 599.392, 40.2805, 558.012, 116.366, 523.306, 797.135, 523.306, 898.583, 533.985, 969.329, 555.342, 1060.1, 606.066 )
-one_way_collision_margin = 128.0
+[node name="Walls" type="Area2D" parent="."]
+show_behind_parent = true
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Collision" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( -25.2269, -92.4986 )
+polygon = PoolVector2Array( 85.2774, 613.95, 45.6347, 627.164, 41.8592, 700.786, 1117.15, 702.312, 1117.16, 392.793, 973.104, 384.567, 977.347, 366.182, 952.256, 201.015, 1214.63, 183.02, 1193.44, 791.151, -56.7268, 791.151, -65.3022, 214.507, 333.283, 204.417, 950.501, 202.735, 975.728, 362.505, 952.182, 552.548, 951.754, 608.286 )
+one_way_collision = true
+one_way_collision_margin = 128.0
 
 [node name="DoorTrigger" type="Area2D" parent="."]
 __meta__ = {
