@@ -5,10 +5,11 @@ export var ex_room_down_limit = 585
 var limit = ex_room_down_limit - ex_room_top_limit
 var orSize = 0.13
 var downSize = 0.18
-var out
+var out = true
 var entered_trigger = false
 var from_bath = false
 var movement = false
+var enter = false
 
 func _ready():
 	if Global.enter_scene == 1:
@@ -45,9 +46,10 @@ func _process(delta):
 		$AnimatedSprite.flip_h = true
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$CollisionShape2D.position=velocity
+		$CollisionShape2D.position=velocity * 0.5
+		if $CollisionShape2D.position.x < 0:
+			$CollisionShape2D.position.x *= 2.5
 	if out:
-		print("out")
 		if not movement:
 			$AnimatedSprite.animation = "stand"
 		elif $AnimatedSprite.animation == "stand":
@@ -63,5 +65,7 @@ func _process(delta):
 		elif $AnimatedSprite.animation == "stand":
 			$AnimatedSprite.animation = "walk"
 	movement = false
-	print($AnimatedSprite.animation, movement)
+	if enter:
+		$CollisionShape2D.position.y *= -1
+		enter = false
 	$AnimatedSprite.play()

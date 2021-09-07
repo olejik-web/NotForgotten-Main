@@ -23,21 +23,20 @@
 [ext_resource path="res://sprites/main_hero/walk/11.png" type="Texture" id=70]
 [ext_resource path="res://sprites/main_hero/walk/7.png" type="Texture" id=71]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 57.0188
-height = 0.0
+[sub_resource type="CircleShape2D" id=1]
+radius = 1286.67
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 51 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 66 ), ExtResource( 71 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 70 ), ExtResource( 59 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 65 ), ExtResource( 57 ), ExtResource( 60 ), ExtResource( 58 ) ],
-"loop": true,
-"name": "walk",
-"speed": 35.0
-}, {
 "frames": [ ExtResource( 47 ) ],
 "loop": true,
 "name": "stand",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 66 ), ExtResource( 71 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 70 ), ExtResource( 59 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 65 ), ExtResource( 57 ), ExtResource( 60 ), ExtResource( 58 ) ],
+"loop": true,
+"name": "walk",
+"speed": 35.0
 } ]
 
 [node name="Player" type="Area2D"]
@@ -47,9 +46,6 @@ script = ExtResource( 41 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.1, 0.1 )
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -58.1691, -743.647 )

@@ -1,1 +1,1 @@
-Programmers: Oleg Eremichew, Nikita Semenov, Roman Vereskov.
+Programmers: Oleg Eremichew, Roman Vereskov.
