@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 export var speed = 200
 export var ex_room_top_limit = 405
 export var ex_room_down_limit = 585
@@ -10,6 +10,7 @@ var entered_trigger = false
 var from_bath = false
 var movement = false
 var enter = false
+var velocity = Vector2()
 
 func _ready():
 	if Global.enter_scene == 1:
@@ -19,8 +20,7 @@ func _ready():
 	elif Global.enter_scene == 2:
 		$AnimatedSprite.flip_h = true
 		
-func _process(delta):
-	var velocity = Vector2()
+func get_input():
 	if Input.is_action_pressed("ui_up"):
 		if position.y > ex_room_top_limit:
 			velocity.y -= 0.6
@@ -37,35 +37,22 @@ func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 		$AnimatedSprite.animation = "walk"
-		movement = true
 		$AnimatedSprite.flip_h = false
+		movement = true
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
 		$AnimatedSprite.animation = "walk"
-		movement = true
 		$AnimatedSprite.flip_h = true
+		movement = true
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$CollisionShape2D.position=velocity * 0.5
-		if $CollisionShape2D.position.x < 0:
-			$CollisionShape2D.position.x *= 2.5
-	if out:
-		if not movement:
-			$AnimatedSprite.animation = "stand"
-		elif $AnimatedSprite.animation == "stand":
-			$AnimatedSprite.animation = "walk"
-		if velocity.x < 0:
-			$AnimatedSprite.flip_h = true
-		elif velocity.x > 0:
-			$AnimatedSprite.flip_h = false
-		position += velocity * delta
+	if movement:
+		$AnimatedSprite.play('walk')
 	else:
-		if not movement:
-			$AnimatedSprite.animation = "stand"
-		elif $AnimatedSprite.animation == "stand":
-			$AnimatedSprite.animation = "walk"
+		$AnimatedSprite.play('stand')
 	movement = false
-	if enter:
-		$CollisionShape2D.position.y *= -1
-		enter = false
-	$AnimatedSprite.play()
+
+func _physics_process(delta):
+	get_input()
+	velocity = move_and_slide(velocity)
+	velocity = Vector2()

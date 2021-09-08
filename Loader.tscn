@@ -116,7 +116,7 @@ position = Vector2( 1246.63, 561.382 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
 animation = "rotate"
-frame = 11
+frame = 51
 __meta__ = {
 "_editor_description_": ""
 }
