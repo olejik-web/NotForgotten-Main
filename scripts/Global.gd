@@ -14,6 +14,7 @@ func get_loader():
 	get_tree().set_current_scene(current_scene)
 
 func get_scene(scene):
+	current_scene.queue_free()
 	current_scene = scene.instance()
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)
