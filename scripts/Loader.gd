@@ -1,7 +1,6 @@
 extends Node
 
 var load_scene
-
 func _ready():
 	if Global.enter_scene == 1:
 		goto_scene('res://Room.tscn')
@@ -10,11 +9,11 @@ func _ready():
 
 func goto_scene(path):
 	load_scene = ResourceLoader.load_interactive(path)
-	set_process(true)
-	$AnimatedSprite.play("walk")
+	#$logo.play("walk")
 
 func _process(delta):
 	if load_scene == null:
+		$logo.set_process(true)
 		set_process(false)
 		return 
 	while true:
@@ -24,6 +23,6 @@ func _process(delta):
 			load_scene = null
 			set_new_scene(resource)
 			break
-
 func set_new_scene(res):
 	Global.get_scene(res)
+	#$logo.set_process(false)
