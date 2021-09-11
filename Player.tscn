@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/MainPlayerScript.gd" type="Script" id=41]
 [ext_resource path="res://sprites/main_hero/walk/0.png" type="Texture" id=47]
@@ -23,18 +23,15 @@
 [ext_resource path="res://sprites/main_hero/walk/11.png" type="Texture" id=70]
 [ext_resource path="res://sprites/main_hero/walk/7.png" type="Texture" id=71]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 1397.85
 height = 0.0
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=3]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 51 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 66 ), ExtResource( 71 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 70 ), ExtResource( 59 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 65 ), ExtResource( 57 ), ExtResource( 60 ), ExtResource( 58 ) ],
 "loop": true,
@@ -53,19 +50,19 @@ script = ExtResource( 41 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )
 self_modulate = Color( 1, 0, 0, 1 )
-material = SubResource( 2 )
+material = SubResource( 1 )
 scale = Vector2( 0.2, 0.1 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2( 0.1, 0.1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -743.647 )
-frames = SubResource( 5 )
+frames = SubResource( 4 )
 animation = "stand"
 
 [node name="Camera2D" type="Camera2D" parent="."]
