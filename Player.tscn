@@ -33,15 +33,15 @@ height = 0.0
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 51 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 66 ), ExtResource( 71 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 70 ), ExtResource( 59 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 65 ), ExtResource( 57 ), ExtResource( 60 ), ExtResource( 58 ) ],
-"loop": true,
-"name": "walk",
-"speed": 35.0
-}, {
 "frames": [ ExtResource( 47 ) ],
 "loop": true,
-"name": "stand",
+"name": "0",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 66 ), ExtResource( 71 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 70 ), ExtResource( 59 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 65 ), ExtResource( 57 ), ExtResource( 60 ), ExtResource( 58 ) ],
+"loop": true,
+"name": "1",
+"speed": 35.0
 } ]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
@@ -63,7 +63,7 @@ shape = SubResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -743.647 )
 frames = SubResource( 4 )
-animation = "stand"
+animation = "1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -60.9, -922.524 )

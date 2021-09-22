@@ -8,9 +8,8 @@ var downSize = 0.18
 var out = true
 var entered_trigger = false
 var from_bath = false
-var movement = false
 var enter = false
-var velocity = Vector2()
+var dir = Vector2(0,0)
 
 func _ready():
 	if Global.enter_scene == 1:
@@ -19,40 +18,11 @@ func _ready():
 		$AnimatedSprite.flip_h = false
 	elif Global.enter_scene == 2:
 		$AnimatedSprite.flip_h = true
-		
-func get_input():
-	if Input.is_action_pressed("ui_up"):
-		if position.y > ex_room_top_limit:
-			velocity.y -= 0.6
-		$AnimatedSprite.animation = "walk"
-		movement = true
-	if Input.is_action_pressed("ui_down"):
-		if position.y < ex_room_down_limit:
-			velocity.y += 0.6
-		$AnimatedSprite.animation = "walk"
-		movement = true
+func _physics_process(delta):
+	dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	dir.y = 0.6*int(Input.is_action_pressed("ui_down")) - 0.6*int(Input.is_action_pressed("ui_up"))
+	$AnimatedSprite.animation = String(int(dir.length()>0))
+	$AnimatedSprite.flip_h = dir.x<0 || $AnimatedSprite.flip_h && dir.x==0
+	move_and_slide(dir.normalized()*speed*int(dir.length()>0))
 	scale.x = (0.5 - (ex_room_down_limit - position.y)/limit) * (downSize - orSize) + orSize 
 	scale.y = (0.5 - (ex_room_down_limit - position.y)/limit) * (downSize - orSize) + orSize 
-	
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_h = false
-		movement = true
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_h = true
-		movement = true
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-	if movement:
-		$AnimatedSprite.play('walk')
-	else:
-		$AnimatedSprite.play('stand')
-	movement = false
-
-func _physics_process(delta):
-	get_input()
-	velocity = move_and_slide(velocity)
-	velocity = Vector2()
